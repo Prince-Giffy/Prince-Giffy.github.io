@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>FLAMES CALCULATOR</title>
+<style>
+#frm{
+  margin-left:400px;
+}
+#boy{
+  margin-bottom:15px;
+}
+#girl{
+  margin-bottom:15px;
+}
+.label1{
+  font-style:italic;
+  font-size:29px;
+}
+#btn{
+ margin-top:25px;
+  margin-left:488px;
+  width:168px;
+  height:25px;
+  font-style:italic;
+  font-size:19px;
+  background-color:lightblue;
+  border:none;
+  border-radius:10px;
+}
+#qu1{
+  margin-left:300px;
+  font-family: "Segoe Print", Times, serif;
+  color:plum;
+}
+#result{
+  margin-left:500px;
+  font-style:italic;
+  font-size:70px;
+  color:green;
+}
+</style>
+</head>
+<body>
+<h1 id="qu1">I believe we secretly Love each other </h1>
+<form id="frm">
+  <div id="boy">
+  <label class="label1">Boy's Name:</label>
+  <input id="bname"><br>
+  </div>
+  <div id="girl">
+  <label class="label1">Girl's Name:</label>
+  <input id="gname"><br>
+  </div>
+</form>
+<button id="btn">Enter</button>
+<p id="result"></p>
+<script>
+function abc(arr, element) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === element) {
+      count++;
+    }
+  }
+  return count;
+}
+
+var btn=document.getElementById("btn")
+function readVal(){
+  var b=document.getElementById("bname").value;
+  var g=document.getElementById("gname").value;
+  var boy=b.toLowerCase()
+  var girl=g.toLowerCase()
+  let l=[]
+ let l2=[]
+for(var i=0;i<boy.length;i++){
+    l.push(boy[i])}
+for(var i=0;i<girl.length;i++){
+    l2.push(girl[i])}
+for(var i=0;i<l.length;i++){
+    for(var j=0;j<l2.length;j++){
+        if(l[i]==l2[j]){
+            l[i]=0
+            l2[j]=0}}}
+  var rem=(boy.length+girl.length)-(abc(l,0)+abc(l2,0))
+var vals=['Friends','Lover','Affair','Marriage','Enemies','Sister']
+for(var i=0;i<5;i++){
+    var r=rem%vals.length
+    if(r!=0){
+        vals.splice(r-1,1)
+        vals=vals.slice(r-1).concat(vals.slice(0,r-1))
+    }else{
+        vals.splice(r-1)
+    }
+}
+  document.getElementById("result").innerHTML = vals;
+}
+btn.addEventListener('click',readVal)
+</script>
+</body>
+</html>
